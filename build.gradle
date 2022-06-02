@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		cleanArchitectureVersion = '2.4.0'
+		springBootVersion = '2.6.7'
+		sonarVersion = '3.0'
+		jacocoVersion = '0.8.5'
+        lombokVersion = '1.18.22'
+        log4jVersion = '2.17.1'
+    }
+}
+plugins {
+    id 'co.com.bancolombia.cleanArchitecture' version "${cleanArchitectureVersion}"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'org.sonarqube' version "${sonarVersion}"
+    id 'jacoco'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "backendspring"
+        property "sonar.host.url", "http://localhost:9000/"
+        property "sonar.login", "1a10509e2b9ce242231173090dea119cd81d2dd2"
+        property "sonar.coverage.exclusions", [
+                "**/com/backend/spring/config/**/*"
+        ]
+        property "sonar.test.exclusions", [
+                "**/com/backend/spring/config/**/*"
+        ]
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacocoRootReport/jacocoRootReport.xml"
+    }
+}
+
+
+apply from: './main.gradle'
