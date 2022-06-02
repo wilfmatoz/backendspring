@@ -17,9 +17,14 @@ plugins {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "backendspring"
-        property "sonar.host.url", "http://localhost:9000/"
-        property "sonar.login", "1a10509e2b9ce242231173090dea119cd81d2dd2"
+//        property "sonar.projectName", "backendspring"
+//        property "sonar.host.url", "http://localhost:9000/"
+//        property "sonar.login", "1a10509e2b9ce242231173090dea119cd81d2dd2"
+
+        property "sonar.projectKey", "wilfmatoz_backendspring"
+        property "sonar.organization", "wilfmatoz"
+        property "sonar.host.url", "https://sonarcloud.io"
+
         property "sonar.coverage.exclusions", [
                 "**/com/backend/spring/config/**/*"
         ]
